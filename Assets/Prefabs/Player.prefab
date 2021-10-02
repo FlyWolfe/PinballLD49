@@ -97,6 +97,7 @@ MonoBehaviour:
   slingForce: 20
   maxMouseDragMagnitude: 1
   mouseDragScale: 100
+  fallGravityAddition: 3
   groundRaycastDistance: 0.1
   BoardAngle: 45
 --- !u!135 &8621384295705608582

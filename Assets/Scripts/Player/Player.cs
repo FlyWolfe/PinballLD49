@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float maxMouseDragMagnitude = 10f;
     [Tooltip("How far the user should drag in screen space to get the maximum drag power")]
     public float mouseDragScale = 100f;
+    public float fallGravityAddition = 1f;
     Rigidbody rigidBody;
 
     // Collision
@@ -64,6 +65,16 @@ public class Player : MonoBehaviour
 
             SlingBall(slingVector.normalized, magnitude);
         }
+
+        if (rigidBody.velocity.y < 0 && rigidBody.velocity.z < 0) {
+            FallFaster();
+        }
+    }
+
+    void FallFaster() {
+        Vector3 forceDirection = rigidBody.velocity;
+        forceDirection.x = 0f;
+        AddForce(forceDirection.normalized, fallGravityAddition);
     }
 
     /// <summary>
