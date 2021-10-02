@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
 
 
 
+    public void AddForceImpulse(Vector3 direction, float magnitude) {
+        rigidBody.AddForce(direction * magnitude, ForceMode.Impulse);
+    }
+
+
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -55,20 +61,25 @@ public class Player : MonoBehaviour
     /// Applies an impulse force to the player in the given direction and with the given magnitude
     /// </summary>
     /// <param name="slingDirection">The directional vector to sling the player</param>
-    void SlingBall(Vector2 slingDirection, float magnitude)
+    void SlingBall(Vector2 direction, float magnitude)
     {
         Vector3 forceDirection = Vector3.zero;
 
         // TODO: Calculate this better?
-        forceDirection.x = slingDirection.x;
-        forceDirection.y = slingDirection.y / 2f;
-        forceDirection.z = slingDirection.y / 2f;
+        forceDirection.x = direction.x;
+        forceDirection.y = direction.y / 2f;
+        forceDirection.z = direction.y / 2f;
         
         rigidBody.AddForce(forceDirection * magnitude, ForceMode.Impulse);
     }
 
+    /// <summary>
+    /// Checks to see if the player is on a platform
+    /// </summary>
+    /// <returns>True if a platform collision was found, false otherwise</returns>
     bool IsOnPlatform() {
-        int mask = 1 << 10;    // Ground on layer 10 in the inspector
+        // TODO: Check if the player is above the platform, not just colliding with it
+        int mask = 1 << 10; // Platforms on layer 10 in the inspector
         return Physics.CheckSphere(transform.position, transform.localScale.y / 2f + groundRaycastDistance, mask);
     }
 }
