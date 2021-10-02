@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public delegate void OnWinGame();
+    public delegate void OnResetGame();
+
 
     public Transform levelBottom;
     public Transform levelTop;
@@ -11,7 +14,12 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
     private Player player;
     private Vector3 playerStartPosition;
+    private float timer;
+    private bool isGameRunning = false;
 
+
+    public OnWinGame OnGameWon { get; set; }
+    public OnResetGame OnGameReset { get; set; }
 
     public float LevelProgress
     { 
@@ -28,11 +36,15 @@ public class GameController : MonoBehaviour
         } 
     }
 
-    public void WinGame() {
-        // TODO: Victory logic
-        // Placeholder functionality
-        ResetPlayer();
+    public float Timer
+    {
+        get
+        {
+            return timer;
+        }
     }
+
+
 
     private void Awake()
     {
@@ -44,22 +56,56 @@ public class GameController : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         playerStartPosition = player.transform.position;
+
+        ResetGame();
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (isGameRunning)
         {
-            ResetPlayer();
+            timer += Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ResetPlayer();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ResetGame();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
         }
     }
 
+    public void WinGame() {
+        // TODO: Victory logic
+        // Placeholder functionality
+        isGameRunning = false;
+        OnGameWon.Invoke();
+    }
 
+    public void ResetGame()
+    {
+        isGameRunning = true;
+        timer = 0f;
+        OnGameReset.Invoke();
+        ResetPlayer();
+    }
 
     private void ResetPlayer()
     {
         player.transform.position = playerStartPosition;
         player.ResetRigidbody();
     }
+    
+
 }
