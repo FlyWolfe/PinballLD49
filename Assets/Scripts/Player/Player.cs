@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     [Tooltip("Distance from the center of the ball to cast a ray for checking if on a platform")]
     public float groundRaycastDistance = 5f;
 
+
     // Input
     Vector3 mouseDownPos;
 
@@ -30,7 +32,14 @@ public class Player : MonoBehaviour
     public void AddForceImpulse(Vector3 direction, float magnitude) {
         rigidBody.AddForce(direction * magnitude, ForceMode.Impulse);
     }
-
+    public void AddForce(Vector3 direction, float magnitude)
+    {
+        rigidBody.AddForce(direction * magnitude, ForceMode.Force);
+    }
+    public void ResetRigidbody()
+    {
+        rigidBody.velocity = Vector3.zero;
+    }
 
 
     void Start()
