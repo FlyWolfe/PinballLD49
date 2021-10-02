@@ -90,14 +90,14 @@ public class GameController : MonoBehaviour
         // TODO: Victory logic
         // Placeholder functionality
         isGameRunning = false;
-        OnGameWon.Invoke();
+        OnGameWon?.Invoke();
     }
 
     public void ResetGame()
     {
         isGameRunning = true;
         timer = 0f;
-        OnGameReset.Invoke();
+        OnGameReset?.Invoke();
         ResetPlayer();
     }
 
