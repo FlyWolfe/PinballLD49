@@ -12,12 +12,14 @@ public class Flippers : MonoBehaviour
 
     private Quaternion startRotation;
     private Quaternion endRotation;
+    private Rigidbody rigidBody;
 
 
     private void Start()
     {
         startRotation = transform.rotation;
         endRotation = startRotation * Quaternion.Euler(Vector3.forward * rotation);
+        rigidBody = rotationRoot.GetComponent<Rigidbody>();
 
         /*Debug.Log(startRotation.eulerAngles);
         Debug.Log(endRotation.eulerAngles);
@@ -38,7 +40,8 @@ public class Flippers : MonoBehaviour
 
     private void SetRootRotation(Quaternion quaternion)
     {
-        rotationRoot.rotation = quaternion;
+        rigidBody.MoveRotation(quaternion);
+        // OLD // rotationRoot.rotation = quaternion;
     }
 
     private IEnumerator Lerp(Quaternion start, Quaternion end, float time, Action<Quaternion> onStep)

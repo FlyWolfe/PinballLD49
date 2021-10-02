@@ -28,6 +28,12 @@ public class GameController : MonoBehaviour
         } 
     }
 
+    public void WinGame() {
+        // TODO: Victory logic
+        // Placeholder functionality
+        ResetPlayer();
+    }
+
     private void Awake()
     {
         Instance = this;
