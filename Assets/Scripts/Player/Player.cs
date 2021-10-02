@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [Tooltip("Distance from the center of the ball to cast a ray for checking if on a platform")]
     public float groundRaycastDistance = 5f;
 
+    // UI
+    public ArrowUI arrowUI;
 
     // Input
     Vector3 mouseDownPos;
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         {
             mouseDownPos = Input.mousePosition;
         }
-        if (Input.GetMouseButtonUp(0) && IsOnPlatform())
+        else if (Input.GetMouseButtonUp(0) && IsOnPlatform())
         {
             Vector3 slingVector = -(Input.mousePosition - mouseDownPos);
 
@@ -64,6 +66,24 @@ public class Player : MonoBehaviour
             magnitude *= slingForce;
 
             SlingBall(slingVector.normalized, magnitude);
+        }
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            arrowUI.ClearArrow();
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 slingVector = -(Input.mousePosition - mouseDownPos);
+            float arrowMaxLength = arrowUI.arrowMaxLength;
+
+            float magnitude = Vector3.Distance(Input.mousePosition, mouseDownPos);
+            magnitude = magnitude.Remap(-100f, 100f, -arrowMaxLength, arrowMaxLength);
+            magnitude = Mathf.Abs(Mathf.Clamp(magnitude, -arrowMaxLength, arrowMaxLength));
+
+            arrowUI.Draw(transform.position,
+                         transform.position + slingVector.normalized * magnitude);
         }
 
         if (rigidBody.velocity.y < 0 && rigidBody.velocity.z < 0) {
