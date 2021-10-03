@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
 
     public TMP_Text timerDisplay;
 
+    public TMP_Text scoreDisplay;
+
     public TMP_Text finalTimeDisplay;
     
     public GameObject inGameUI;
@@ -30,6 +32,12 @@ public class UIController : MonoBehaviour
     {
         DisplayProgress();
         DisplayTime();
+        DisplayScore();
+    }
+
+    private void DisplayScore()
+    {
+        scoreDisplay.text = $"Score: {string.Format("{0:0000}",GameController.Instance.Score)}";
     }
 
     private void DisplayProgress()

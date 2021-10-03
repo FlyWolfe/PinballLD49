@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceStrength: 120
+  score: 1000
   animator: {fileID: 5556881904180544758}
   alienMaterialList:
   - {fileID: 2100000, guid: d2b3e3f230093c14fb4f955e362724a8, type: 2}

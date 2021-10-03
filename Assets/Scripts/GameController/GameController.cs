@@ -10,11 +10,15 @@ public class GameController : MonoBehaviour
 
     public Transform levelBottom;
     public Transform levelTop;
+    public float scoreCountDelay = 0.01f;
 
     public static GameController Instance;
     private Player player;
     private Vector3 playerStartPosition;
     private float timer;
+    private float score;
+    private float targetScore;
+    private float lastScoreCounterTime; 
     private bool isGameRunning = false;
 
 
@@ -44,6 +48,21 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public float Score { get { return score; } }
+
+    public float TargetScore
+    {
+        get
+        {
+            return targetScore;
+        }
+        set
+        {
+            targetScore = value;
+        }
+    }
+
+
 
 
     private void Awake()
@@ -66,6 +85,11 @@ public class GameController : MonoBehaviour
         if (isGameRunning)
         {
             timer += Time.deltaTime;
+
+            if(score < targetScore && Time.time - lastScoreCounterTime > scoreCountDelay)
+            {
+                score += 1;
+            }
 
             if (Input.GetKeyDown(KeyCode.R))
             {

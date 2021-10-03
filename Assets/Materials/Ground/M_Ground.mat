@@ -73,7 +73,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_4849AC45: {r: 1, g: 0.25, b: 0.25, a: 1}
+    - Color_4849AC45: {r: 1, g: 0.25098038, b: 0.9080926, a: 1}
     - Vector2_ABE800BD: {r: 200, g: 200, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

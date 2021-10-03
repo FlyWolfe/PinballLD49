@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bumper : MonoBehaviour
 {
     public float bounceStrength;
-
+    public int score = 300;
     public Animator animator;
 
     public List<Material> alienMaterialList;
@@ -28,6 +28,7 @@ public class Bumper : MonoBehaviour
             player.AddForceImpulse(direction.normalized, bounceStrength);
             RandomizeMaterial();
             animator.SetTrigger("Bump");
+            GameController.Instance.TargetScore += score;
         }
     }
 
