@@ -623,6 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelBottom: {fileID: 930763410}
   levelTop: {fileID: 283650114}
+  scoreCountDelay: 0.01
 --- !u!4 &478656992
 Transform:
   m_ObjectHideFlags: 0
@@ -1721,6 +1722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressDisplay: {fileID: 251289388}
   timerDisplay: {fileID: 0}
+  scoreDisplay: {fileID: 0}
+  finalScoreDisplay: {fileID: 0}
   finalTimeDisplay: {fileID: 0}
   inGameUI: {fileID: 0}
   statUI: {fileID: 0}
@@ -3143,6 +3146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceStrength: 30
+  score: 300
   animator: {fileID: 0}
   alienMaterialList: []
   alienRenderer: {fileID: 0}
