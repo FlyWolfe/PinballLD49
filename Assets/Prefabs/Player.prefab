@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c8fce52c8ec9d4eaf725315a0c6efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slingForce: 20
+  slingForce: 150
   maxMouseDragMagnitude: 1
   mouseDragScale: 300
   fallGravityAddition: 3
