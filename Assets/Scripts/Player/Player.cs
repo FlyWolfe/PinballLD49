@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     Vector3 mouseDownPos;
 
     // Miscellaneous
-    [Tooltip("Angle (in degrees) of the board on the x-axis")]
-    public float BoardAngle = 45;
+    [Tooltip("The game board (used for vector angle calculation)")]
+    public Transform board;
 
 
 
@@ -103,12 +103,15 @@ public class Player : MonoBehaviour
     /// <param name="slingDirection">The directional vector to sling the player</param>
     void SlingBall(Vector2 direction, float magnitude)
     {
-        Vector3 forceDirection = Vector3.zero;
+        //Vector3 forceDirection = Vector3.zero;
 
         // TODO: Calculate this better?
-        forceDirection.x = direction.x;
+        /*forceDirection.x = direction.x;
         forceDirection.y = direction.y / 2f;
-        forceDirection.z = direction.y / 2f;
+        forceDirection.z = direction.y / 2f;*/
+
+        Vector3 forceDirection = Quaternion.Euler(board.eulerAngles.x, 0, 0) * (Vector3)direction;
+        Debug.LogError("Force Direction: " + forceDirection);
         
         rigidBody.AddForce(forceDirection * magnitude, ForceMode.Impulse);
     }
