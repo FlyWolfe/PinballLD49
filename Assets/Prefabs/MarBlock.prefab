@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8119710284309018786}
   - component: {fileID: 4722793157995011126}
   - component: {fileID: 2796173904596374226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2796173904596374227}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: df70f3471f74b1a46b8bedbd250027bb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5766888001065726128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MarBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

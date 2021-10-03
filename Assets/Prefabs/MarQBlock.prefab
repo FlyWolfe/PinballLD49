@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4460698780540083454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MarQBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2107841335371437292}
   - component: {fileID: 3199021005453406328}
   - component: {fileID: 5413765066049666714}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413765066049666717}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: df70f3471f74b1a46b8bedbd250027bb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
