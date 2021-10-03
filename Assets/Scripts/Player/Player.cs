@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
     public void ResetRigidbody()
     {
         rigidBody.velocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
+    }
+    public float GetVelocityMagnitude() {
+        return rigidBody.velocity.magnitude;
     }
 
 
