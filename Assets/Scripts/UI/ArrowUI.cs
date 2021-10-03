@@ -9,6 +9,7 @@ public class ArrowUI : MonoBehaviour
     [Range(0, 1)]
     public float percentHead = 0.4f;
     public float arrowMaxLength = 5f;
+    public float linePlayerOffset = 1f;
 
     private LineRenderer lineRenderer;
 
@@ -22,7 +23,9 @@ public class ArrowUI : MonoBehaviour
     {
         if (!lineRenderer.enabled)
             lineRenderer.enabled = true;
-            
+
+        arrowStart += (arrowEnd - arrowStart).normalized * linePlayerOffset;
+
         lineRenderer.widthCurve = new AnimationCurve(
             new Keyframe(0, 0.4f), 
             new Keyframe(0.999f - percentHead, 0.4f),   // neck of arrow

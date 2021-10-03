@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public Transform levelBottom;
     public Transform levelTop;
     public float scoreCountDelay = 0.01f;
-
+    
     public static GameController Instance;
     private Player player;
     private Vector3 playerStartPosition;
