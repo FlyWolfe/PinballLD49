@@ -10,6 +10,10 @@ public class Flippers : MonoBehaviour
     public float rotationTime;
     public float rotationDelay;
     public float holdDelay = 0.1f;
+    public float rotationDelayOffset = 0.5f;
+
+    public AudioSource audioSourceUp;
+    public AudioSource audioSourceDown;
 
     private Quaternion startRotation;
     private Quaternion endRotation;
@@ -30,12 +34,15 @@ public class Flippers : MonoBehaviour
 
     private IEnumerator FlipperRoutine()
     {
+        yield return new WaitForSeconds(rotationDelay + UnityEngine.Random.Range(-rotationDelayOffset, rotationDelayOffset));
         while (true)
         {
+            audioSourceUp.Play();
             yield return Lerp(startRotation, endRotation, rotationTime, SetRootRotation);
             yield return new WaitForSeconds(holdDelay);
+            audioSourceDown.Play();
             yield return Lerp(endRotation, startRotation, rotationTime, SetRootRotation);
-            yield return new WaitForSeconds(rotationDelay);
+            yield return new WaitForSeconds(rotationDelay + UnityEngine.Random.Range(-rotationDelayOffset, rotationDelayOffset));
         }
     }
 

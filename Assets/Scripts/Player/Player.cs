@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
     [Tooltip("Distance from the center of the ball to cast a ray for checking if on a platform")]
     public float groundRaycastDistance = 5f;
 
+    //SFX
+    //public float rollingSoundMagnitudeThreshold = 0.1f;
+    //public AudioSource rollingSound;
+    public AudioSource hitSound;
+
     // UI
     public ArrowUI arrowUI;
 
@@ -33,7 +38,8 @@ public class Player : MonoBehaviour
 
 
 
-    public void AddForceImpulse(Vector3 direction, float magnitude) {
+    public void AddForceImpulse(Vector3 direction, float magnitude)
+    {
         rigidBody.AddForce(direction * magnitude, ForceMode.Impulse);
     }
     public void AddForce(Vector3 direction, float magnitude)
@@ -45,7 +51,8 @@ public class Player : MonoBehaviour
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
     }
-    public float GetVelocityMagnitude() {
+    public float GetVelocityMagnitude()
+    {
         return rigidBody.velocity.magnitude;
     }
 
@@ -90,16 +97,36 @@ public class Player : MonoBehaviour
             arrowUI.Draw(transform.position,
                          transform.position + slingVector.normalized * magnitude);
         }
-        else {
+        else
+        {
             arrowUI.ClearArrow();
         }
 
-        if (rigidBody.velocity.y < 0 && rigidBody.velocity.z < 0) {
+        if (rigidBody.velocity.y < 0 && rigidBody.velocity.z < 0)
+        {
             FallFaster();
         }
+
+        /*if(rollingSound.isPlaying == false && rigidBody.velocity.magnitude > rollingSoundMagnitudeThreshold) 
+        {
+            rollingSound.Play();
+        }
+        else if(rollingSound.isPlaying && rigidBody.velocity.magnitude < rollingSoundMagnitudeThreshold)
+        {
+            rollingSound.Stop();
+        }*/
     }
 
-    void FallFaster() {
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer != 13) //= board
+            if (hitSound.isPlaying == false)
+                hitSound.Play();
+
+    }
+
+    void FallFaster()
+    {
         Vector3 forceDirection = rigidBody.velocity;
         forceDirection.x = 0f;
         AddForce(forceDirection.normalized, fallGravityAddition);
@@ -112,7 +139,7 @@ public class Player : MonoBehaviour
     void SlingBall(Vector2 direction, float magnitude)
     {
         Vector3 forceDirection = Quaternion.Euler(board.eulerAngles.x, 0, 0) * (Vector3)direction;
-        
+
         rigidBody.AddForce(forceDirection * magnitude, ForceMode.Impulse);
     }
 
