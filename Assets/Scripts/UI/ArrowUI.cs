@@ -38,6 +38,7 @@ public class ArrowUI : MonoBehaviour
     }
 
     public void ClearArrow() {
-        lineRenderer.enabled = false;
+        if (lineRenderer.enabled)
+            lineRenderer.enabled = false;
     }
 }

@@ -67,23 +67,21 @@ public class Player : MonoBehaviour
 
             SlingBall(slingVector.normalized, magnitude);
         }
-        
-        if (Input.GetMouseButtonUp(0))
-        {
-            arrowUI.ClearArrow();
-        }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && IsOnPlatform())
         {
             Vector3 slingVector = -(Input.mousePosition - mouseDownPos);
             float arrowMaxLength = arrowUI.arrowMaxLength;
 
             float magnitude = Vector3.Distance(Input.mousePosition, mouseDownPos);
-            magnitude = magnitude.Remap(-100f, 100f, -arrowMaxLength, arrowMaxLength);
+            magnitude = magnitude.Remap(-mouseDragScale, mouseDragScale, -arrowMaxLength, arrowMaxLength);
             magnitude = Mathf.Abs(Mathf.Clamp(magnitude, -arrowMaxLength, arrowMaxLength));
 
             arrowUI.Draw(transform.position,
                          transform.position + slingVector.normalized * magnitude);
+        }
+        else {
+            arrowUI.ClearArrow();
         }
 
         if (rigidBody.velocity.y < 0 && rigidBody.velocity.z < 0) {

@@ -97,11 +97,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slingForce: 20
   maxMouseDragMagnitude: 1
-  mouseDragScale: 100
+  mouseDragScale: 300
   fallGravityAddition: 3
   groundRaycastDistance: 0.1
   arrowUI: {fileID: 183810169499909400}
-  BoardAngle: 45
+  board: {fileID: 0}
 --- !u!135 &8621384295705608582
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentHead: 0.4
-  arrowMaxLength: 5
+  arrowMaxLength: 7
 --- !u!120 &1502615765609343313
 LineRenderer:
   m_ObjectHideFlags: 0
