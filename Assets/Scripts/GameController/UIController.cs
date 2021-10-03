@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour
 
     public TMP_Text scoreDisplay;
 
+
+    public TMP_Text finalScoreDisplay;
+
     public TMP_Text finalTimeDisplay;
     
     public GameObject inGameUI;
@@ -64,6 +67,7 @@ public class UIController : MonoBehaviour
         inGameUI.SetActive(false);
         statUI.SetActive(true);
 
+        finalScoreDisplay.text = string.Format("Final score: {0}", GameController.Instance.Score);
         finalTimeDisplay.text = string.Format("You've finished the game in {0}", FormatedTimer());
     }
 
