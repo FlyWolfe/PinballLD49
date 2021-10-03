@@ -11,11 +11,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4680df994222099428da9e1cf05059d6, type: 2}
+      objectReference: {fileID: 2100000, guid: 9bc218abb222d5e4f9258fa2b6b266bd, type: 2}
     - target: {fileID: 14908633167047118, guid: f62115347e528284aab60594d0440169,
         type: 3}
       propertyPath: m_Name
-      value: Ramp_up
+      value: Ramp_up Variant
       objectReference: {fileID: 0}
     - target: {fileID: 14908633167047119, guid: f62115347e528284aab60594d0440169,
         type: 3}
