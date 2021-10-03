@@ -149,8 +149,7 @@ public class Player : MonoBehaviour
     /// <returns>True if a platform collision was found, false otherwise</returns>
     bool IsOnPlatform()
     {
-        // TODO: Check if the player is above the platform, not just colliding with it
         int mask = 1 << 10; // Platforms on layer 10 in the inspector
-        return Physics.CheckSphere(transform.position, transform.localScale.y / 2f + groundRaycastDistance, mask);
+        return Physics.CheckSphere(transform.position + ((transform.localScale.y / 2f) * (-board.up)) , transform.localScale.y / 4f + groundRaycastDistance, mask);
     }
 }
