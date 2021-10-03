@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     // Input
     Vector3 mouseDownPos;
+    public float curvePower = 4f;
 
     // Miscellaneous
     [Tooltip("The game board (used for vector angle calculation)")]
@@ -65,8 +66,13 @@ public class Player : MonoBehaviour
             Vector3 slingVector = -(Input.mousePosition - mouseDownPos);
 
             float magnitude = Vector3.Distance(Input.mousePosition, mouseDownPos);
-            magnitude = magnitude.Remap(-100f, 100f, -maxMouseDragMagnitude, maxMouseDragMagnitude);
+            magnitude = magnitude.Remap(-mouseDragScale, mouseDragScale, -maxMouseDragMagnitude, maxMouseDragMagnitude);
             magnitude = Mathf.Clamp(magnitude, -maxMouseDragMagnitude, maxMouseDragMagnitude);
+
+            float powerValue = magnitude.Remap(-maxMouseDragMagnitude, maxMouseDragMagnitude, -1f, 1f);
+            powerValue = Mathf.Abs(magnitude);
+            magnitude *= Mathf.Pow(powerValue, curvePower);
+
             magnitude *= slingForce;
 
             SlingBall(slingVector.normalized, magnitude);

@@ -101,6 +101,7 @@ MonoBehaviour:
   fallGravityAddition: 3
   groundRaycastDistance: 0.1
   arrowUI: {fileID: 183810169499909400}
+  curvePower: 2
   board: {fileID: 0}
 --- !u!135 &8621384295705608582
 SphereCollider:
