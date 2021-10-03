@@ -12,6 +12,9 @@ public class Bumper : MonoBehaviour
     public List<Material> alienMaterialList;
     public Renderer alienRenderer;
 
+    public AudioSource audioSource;
+    public AudioSource audioSourceHit;
+
     private Material currentMaterial;
 
 
@@ -29,6 +32,15 @@ public class Bumper : MonoBehaviour
             RandomizeMaterial();
             animator.SetTrigger("Bump");
             GameController.Instance.TargetScore += score;
+
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+            audioSource.Play();
+
+            audioSourceHit.Play();
+            
         }
     }
 

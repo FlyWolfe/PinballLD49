@@ -5,14 +5,16 @@ using UnityEngine;
 public class Stopper : MonoBehaviour
 {
     public int score;
+    public AudioSource audioSource;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        Player player = collision.gameObject.GetComponent<Player>();
 
         if (player)
         {
             GameController.Instance.TargetScore += score;
+            audioSource.Play();
         }
     }
 }

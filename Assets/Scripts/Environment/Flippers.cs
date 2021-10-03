@@ -9,6 +9,7 @@ public class Flippers : MonoBehaviour
     public float rotation;
     public float rotationTime;
     public float rotationDelay;
+    public float holdDelay = 0.1f;
 
     private Quaternion startRotation;
     private Quaternion endRotation;
@@ -32,7 +33,7 @@ public class Flippers : MonoBehaviour
         while (true)
         {
             yield return Lerp(startRotation, endRotation, rotationTime, SetRootRotation);
-            //yield return new WaitForSeconds(rotationDelay);
+            yield return new WaitForSeconds(holdDelay);
             yield return Lerp(endRotation, startRotation, rotationTime, SetRootRotation);
             yield return new WaitForSeconds(rotationDelay);
         }
