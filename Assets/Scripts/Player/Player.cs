@@ -102,7 +102,6 @@ public class Player : MonoBehaviour
     void SlingBall(Vector2 direction, float magnitude)
     {
         Vector3 forceDirection = Quaternion.Euler(board.eulerAngles.x, 0, 0) * (Vector3)direction;
-        Debug.LogError("Force Direction: " + forceDirection);
         
         rigidBody.AddForce(forceDirection * magnitude, ForceMode.Impulse);
     }
