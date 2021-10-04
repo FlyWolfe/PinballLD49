@@ -63,7 +63,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 500
   audioSource: {fileID: 6893606575134126091}
-  pitchOffset: 0.05
 --- !u!54 &8760080501887278667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -228,6 +227,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2093742693447715383}
     m_Modifications:
+    - target: {fileID: 292184374889844753, guid: 0bf421b14b0d57e4da48b385e4789a94,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 292184374889844753, guid: 0bf421b14b0d57e4da48b385e4789a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788567185131498481, guid: 0bf421b14b0d57e4da48b385e4789a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5238930329914525605, guid: 0bf421b14b0d57e4da48b385e4789a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8239422812855036012, guid: 0bf421b14b0d57e4da48b385e4789a94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -302,6 +321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GhostBlocker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724492585575985878, guid: 0bf421b14b0d57e4da48b385e4789a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf421b14b0d57e4da48b385e4789a94, type: 3}

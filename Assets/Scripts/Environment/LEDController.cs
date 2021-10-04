@@ -17,17 +17,31 @@ public class LEDController : MonoBehaviour
 
     public List<LEDPair> leds;
 
+    public bool controlledByPlayer = false;
+
 
     private void Start()
     {
-        foreach (LEDPair pair in leds)
-        {
-            foreach (LED led in pair.leds)
+        if (!controlledByPlayer) {
+            foreach (LEDPair pair in leds)
             {
-                led.TurnOff();
+                foreach (LED led in pair.leds)
+                {
+                    led.TurnOff();
+                }
+            }
+            StartCoroutine(DisplayRoutine());
+        }
+        else {
+            foreach (LEDPair pair in leds)
+            {
+                foreach (LED led in pair.leds)
+                {
+                    led.TurnOff();
+                    led.SetControlledByPlayer();
+                }
             }
         }
-        StartCoroutine(DisplayRoutine());
     }
 
 

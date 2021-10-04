@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public Transform levelBottom;
     public Transform levelTop;
     public float scoreCountDelay = 0.01f;
+    public float scoreCountSpeed = 300f;
     
     public static GameController Instance;
     private Player player;
@@ -88,7 +89,9 @@ public class GameController : MonoBehaviour
 
             if(score < targetScore && Time.time - lastScoreCounterTime > scoreCountDelay)
             {
-                score += 1;
+                score += 1 * Time.deltaTime * scoreCountSpeed;
+                if (score > targetScore)
+                    score = targetScore;
             }
 
             if (Input.GetKeyDown(KeyCode.R))

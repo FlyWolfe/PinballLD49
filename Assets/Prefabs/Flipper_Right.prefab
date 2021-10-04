@@ -164,6 +164,7 @@ MonoBehaviour:
   rotationTime: 0.08
   rotationDelay: 1
   holdDelay: 0.1
+  rotationDelayOffset: 0.5
   audioSourceUp: {fileID: 4902960609414567802}
   audioSourceDown: {fileID: 4316619452004539975}
 --- !u!82 &4902960609414567802
