@@ -18,11 +18,11 @@ public class Spinner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();
-        float additionalMagnitude = player.GetVelocityMagnitude();
         Vector3 finalForce;
 
         if (player)
         {
+            float additionalMagnitude = player.GetVelocityMagnitude();
             float direction = Mathf.Sign(player.transform.position.y - transform.position.y);
             Debug.LogWarning($"Force: {transform.up * -direction * torqueForce * additionalMagnitude}");
             finalForce = transform.up * -direction * torqueForce * additionalMagnitude;
