@@ -6,6 +6,7 @@ public class Stopper : MonoBehaviour
 {
     public int score;
     public AudioSource audioSource;
+    public float maxImpactForSound = 50f;
     //public float pitchOffset = 0.2f;
 
     //private float basePitch;
@@ -23,7 +24,8 @@ public class Stopper : MonoBehaviour
         {
             GameController.Instance.TargetScore += score;
             //audioSource.pitch = basePitch + Random.Range(-pitchOffset, pitchOffset);
-            audioSource.Play();
+            
+            audioSource.PlayOneShot(audioSource.clip, Mathf.Clamp01(collision.impulse.magnitude.Remap(0, maxImpactForSound, 0, 1)));
         }
     }
 }

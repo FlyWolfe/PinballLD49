@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     // Collision
     [Tooltip("Distance from the center of the ball to cast a ray for checking if on a platform")]
     public float groundRaycastDistance = 5f;
+    public float maxImpactForSound = 50f;
 
     //SFX
     //public float rollingSoundMagnitudeThreshold = 0.1f;
@@ -120,8 +121,9 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer != 13) //= board
-            if (hitSound.isPlaying == false)
-                hitSound.Play();
+            if (hitSound.isPlaying == false) {
+                hitSound.PlayOneShot(hitSound.clip, Mathf.Clamp01(collision.impulse.magnitude.Remap(0, maxImpactForSound, 0, 1)));
+            }
 
     }
 

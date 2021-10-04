@@ -101,6 +101,7 @@ MonoBehaviour:
   mouseDragScale: 300
   fallGravityAddition: 3
   groundRaycastDistance: 0.1
+  maxImpactForSound: 50
   hitSound: {fileID: 7115852691391060733}
   arrowUI: {fileID: 183810169499909400}
   curvePower: 2

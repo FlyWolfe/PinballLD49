@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 500
   audioSource: {fileID: 6893606575134126091}
+  maxImpactForSound: 50
 --- !u!54 &8760080501887278667
 Rigidbody:
   m_ObjectHideFlags: 0
