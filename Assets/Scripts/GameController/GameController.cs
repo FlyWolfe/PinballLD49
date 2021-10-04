@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public delegate void OnWinGame();
     public delegate void OnResetGame();
 
+    public AudioSource backgroundMusic;
 
     public Transform levelBottom;
     public Transform levelTop;
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour
     private Player player;
     private Vector3 playerStartPosition;
     private float timer;
+    private float splitTimer;
     private float score;
     private float targetScore;
     private float lastScoreCounterTime; 
@@ -49,6 +51,14 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public float SplitTimer
+    {
+        get
+        {
+            return splitTimer;
+        }
+    }
+
     public float Score { get { return score; } }
 
     public float TargetScore
@@ -63,12 +73,14 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool IsGameRunning { get { return isGameRunning; } }
 
 
 
     private void Awake()
     {
         Instance = this;
+        backgroundMusic.Play();
     }
 
 
@@ -86,8 +98,9 @@ public class GameController : MonoBehaviour
         if (isGameRunning)
         {
             timer += Time.deltaTime;
+            splitTimer += Time.deltaTime;
 
-            if(score < targetScore && Time.time - lastScoreCounterTime > scoreCountDelay)
+            if (score < targetScore && Time.time - lastScoreCounterTime > scoreCountDelay)
             {
                 score += 1 * Time.deltaTime * scoreCountSpeed;
                 if (score > targetScore)
@@ -122,14 +135,15 @@ public class GameController : MonoBehaviour
 
     public void ResetGame()
     {
-        isGameRunning = true;
         timer = 0f;
+        isGameRunning = true;
         OnGameReset?.Invoke();
         ResetPlayer();
     }
 
     private void ResetPlayer()
     {
+        splitTimer = 0f;
         player.transform.position = playerStartPosition;
         player.ResetRigidbody();
     }

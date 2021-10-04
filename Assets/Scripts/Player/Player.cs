@@ -65,6 +65,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (GameController.Instance.IsGameRunning == false)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownPos = Input.mousePosition;
