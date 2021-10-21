@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the pinball player object and handles all logic for it
+/// </summary>
 public class Player : MonoBehaviour
 {
 
@@ -38,20 +41,41 @@ public class Player : MonoBehaviour
     public Transform board;
 
 
-
+    /// <summary>
+    /// Adds a directional force impulse to the player
+    /// Useful for bumpers and other objects that bump the player in one frame
+    /// </summary>
+    /// <param name="direction">The direction of the force (should be normalized)</param>
+    /// <param name="magnitude">The magnitude of the force</param>
     public void AddForceImpulse(Vector3 direction, float magnitude)
     {
         rigidBody.AddForce(direction * magnitude, ForceMode.Impulse);
     }
+
+    /// <summary>
+    /// Adds a directional force to the player
+    /// Useful for long-term forces on the player
+    /// </summary>
+    /// <param name="direction">The direction of the force (should be normalized)</param>
+    /// <param name="magnitude">The magnitude of the force</param>
     public void AddForce(Vector3 direction, float magnitude)
     {
         rigidBody.AddForce(direction * magnitude, ForceMode.Force);
     }
+
+    /// <summary>
+    /// Resets the velocity and angular velocity of the RigidBody back to zero
+    /// </summary>
     public void ResetRigidbody()
     {
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
     }
+
+    /// <summary>
+    /// Gets the length of the player's velocity vector
+    /// </summary>
+    /// <returns>The player's velocity as a magnitude</returns>
     public float GetVelocityMagnitude()
     {
         return rigidBody.velocity.magnitude;
@@ -132,6 +156,9 @@ public class Player : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Applies a extra force when the player is falling to add a stronger fall gravity
+    /// </summary>
     void FallFaster()
     {
         Vector3 forceDirection = rigidBody.velocity;

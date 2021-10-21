@@ -5,14 +5,31 @@ using UnityEngine;
 
 public class Flippers : MonoBehaviour
 {
+    /// <summary>
+    /// The Transform of the object whose center is the center of rotation for the flipper
+    /// </summary>
     public Transform rotationRoot;
+    /// <summary>
+    /// The amount of rotation, in degrees, that the flipper should move from its starting rotateion
+    /// </summary>
     public float rotation;
+    /// <summary>
+    /// The amount of time, in seconds, that the rotation should take
+    /// </summary>
     public float rotationTime;
+    
+    // TODO: Add summaries to the following
     public float rotationDelay;
     public float holdDelay = 0.1f;
     public float rotationDelayOffset = 0.5f;
 
+    /// <summary>
+    /// The AudioSource to play clips when the flipper is moving up
+    /// </summary>
     public AudioSource audioSourceUp;
+    /// <summary>
+    /// The AudioSource to play clips when the flipper is moving down
+    /// </summary>
     public AudioSource audioSourceDown;
 
     private Quaternion startRotation;
@@ -26,12 +43,13 @@ public class Flippers : MonoBehaviour
         endRotation = startRotation * Quaternion.Euler(Vector3.forward * rotation);
         rigidBody = rotationRoot.GetComponent<Rigidbody>();
 
-        /*Debug.Log(startRotation.eulerAngles);
-        Debug.Log(endRotation.eulerAngles);
-        SetRootRotation(endRotation);*/
         StartCoroutine(FlipperRoutine());
     }
 
+    /// <summary>
+    /// Rotates the flippers 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FlipperRoutine()
     {
         yield return new WaitForSeconds(rotationDelay + UnityEngine.Random.Range(-rotationDelayOffset, rotationDelayOffset));
@@ -46,10 +64,13 @@ public class Flippers : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Rotates the flipper via its RigidBody so physics objects interact with it
+    /// </summary>
+    /// <param name="quaternion">The rotational quaternion to adjust the RigidBody with</param>
     private void SetRootRotation(Quaternion quaternion)
     {
         rigidBody.MoveRotation(quaternion);
-        // OLD // rotationRoot.rotation = quaternion;
     }
 
     private IEnumerator Lerp(Quaternion start, Quaternion end, float time, Action<Quaternion> onStep)
